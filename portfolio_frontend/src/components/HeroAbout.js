@@ -24,7 +24,7 @@ function HeroAbout() {
         <h1 id="about-title" className="h1" style={{ marginBottom: 12 }}>
           Hello, I’m{' '}
           <span style={{ backgroundImage: 'linear-gradient(90deg, #EC4899, #8B5CF6)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
-            A Creative Developer
+            SPOORTHY
           </span>
           .
         </h1>
