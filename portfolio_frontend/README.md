@@ -1,82 +1,95 @@
-# Lightweight React Template for KAVIA
+# Ocean Professional Portfolio (Playful Theme)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A single-page portfolio built with React and lightweight utility CSS. It includes sections for About, Projects, Skills, and Contact with smooth scrolling, responsive design, and accessible components.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Sticky navbar with section links (About, Projects, Skills, Contact)
+- Smooth scrolling and animated gradient background with optional waves
+- Projects grid (6 sample projects), Skills badges, and Contact form (demo)
+- Lightweight utility CSS (no external UI frameworks)
+- Feature flags via `REACT_APP_FEATURE_FLAGS` JSON
+- Accessible components with keyboard focus rings and ARIA attributes
+- Mobile-first, responsive layout
 
 ## Getting Started
 
-In the project directory, you can run:
+Install and run locally:
 
-### `npm start`
+- npm install
+- npm start
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open http://localhost:3000
 
-### `npm test`
+## Environment Variables
 
-Launches the test runner in interactive watch mode.
+Create a `.env` file at the project root (do not commit secrets). See `.env.example` below:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```
+REACT_APP_API_BASE=http://localhost:4000
+REACT_APP_BACKEND_URL=
+REACT_APP_FRONTEND_URL=http://localhost:3000
+REACT_APP_WS_URL=
+REACT_APP_NODE_ENV=development
+REACT_APP_ENABLE_SOURCE_MAPS=true
+REACT_APP_PORT=3000
+REACT_APP_TRUST_PROXY=false
+REACT_APP_LOG_LEVEL=info
+REACT_APP_HEALTHCHECK_PATH=/health
+REACT_APP_FEATURE_FLAGS={"enableContact":true,"showWaves":true}
+REACT_APP_EXPERIMENTS_ENABLED=false
 ```
 
-### Components
+- If `REACT_APP_API_BASE` is not set, the app will fallback to `REACT_APP_BACKEND_URL` or `http://localhost:4000`.
+- `REACT_APP_FEATURE_FLAGS` accepts a JSON string. Example:
+  - {"enableContact": true, "showWaves": true}
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Theme
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+Ocean Professional — Playful
+- Primary: #EC4899
+- Secondary: #8B5CF6
+- Success: #10B981
+- Error: #EF4444
+- Background: #FDF2F8
+- Surface: #FFFFFF
+- Text: #374151
 
-## Learn More
+Global styles live in:
+- src/styles/utilities.css (spacing, buttons, cards, forms, badges)
+- src/styles/theme.css (background gradients, waves, layout helpers)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Architecture
 
-### Code Splitting
+Components:
+- Navbar: Sticky top navigation with accessible links.
+- HeroAbout: Intro with CTA buttons.
+- ProjectsGrid: 6-card grid of sample projects.
+- SkillsCloud: Tag-style badges.
+- ContactForm: Client-side validation; demo only (no backend request).
+- Footer: Section links and copyright.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Feature Flags:
+- Read from `REACT_APP_FEATURE_FLAGS` JSON. Defaults:
+  - enableContact: true
+  - showWaves: true
 
-### Analyzing the Bundle Size
+## Accessibility
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Semantic landmarks (header, main, footer)
+- Skip to content link
+- Focus-visible outlines
+- ARIA attributes for form validation and navigation
 
-### Making a Progressive Web App
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Build:
+- npm run build
 
-### Advanced Configuration
+The output is generated in `build/`. Configure your host to serve it as static files.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Notes
 
-### Deployment
+- No secrets are hard-coded.
+- The app compiles and runs without external services; contact submission is a placeholder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
